@@ -72,64 +72,49 @@
             <th>User Name</th>
             <th>User ID</th>
             <th>Email Address</th>
+            <th>Address</th>
             <th>Action</th>
             </tr>
-            
-            <tr>
-                <td>nasuu</td>
-                <td>01</td>
-                <td>hahatdog@gmail.com</td>
-                <td>
-                    <input type="image" src="" alt="logo">
-                    <input type="image" src="" alt="logo">
-                    <input type="image" src="" alt="logo">
-                </td>
-            </tr>
+            <?php
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
+                $database = "kuys";
 
-            <tr>
-                <td>lasika</td>
-                <td>20</td>
-                <td>elastei@gmail.com</td>
-                <td>
-                    <input type="image" src="" alt="logo">
-                    <input type="image" src="" alt="logo">
-                    <input type="image" src="" alt="logo">
-                </td>
-            </tr>
+                $connection = new mysqli($servername,$username,$password,$database);
 
-            <tr>
-                <td>spur</td>
-                <td>04</td>
-                <td>mywoas@gmail.com</td>
-                <td>
-                    <input type="image" src="" alt="logo">
-                    <input type="image" src="" alt="logo">
-                    <input type="image" src="" alt="logo">
-                </td>
-            </tr>
+                // check connection
+                if($connection->connect_error){
+                    die("Connection : ERROR " . $connection->connect_error);
+                }
 
-            <tr>
-                <td>jaud</td>
-                <td>03</td>
-                <td>asdahcu@gmail.com</td>
-                <td>
-                    <input type="image" src="" alt="logo">
-                    <input type="image" src="" alt="logo">
-                    <input type="image" src="" alt="logo">
-                </td>
-            </tr>
+                //read data
+                $sql = "SELECT * FROM users";
+                $result = $connection->query($sql);
 
-            <tr>
-                <td>hehe</td>
-                <td>09</td>
-                <td>haheheh@gmail.com</td>
-                <td>
-                    <input type="image" src="" alt="logo">
-                    <input type="image" src="" alt="logo">
-                    <input type="image" src="" alt="logo">
-                </td>
-            </tr>
-        </table>
+                if(!$result){
+                    die("INVALID query " . $connection->error);
+                }
+
+                
+                while($row = $result->fetch_assoc()){
+                    echo "
+                    <tr>
+                        <td>$row[id]</td>
+                        <td>$row[name]</td>
+                        <td>$row[email]</td>
+                        <td>$row[addr]</td>
+                        <td>
+                            <a href = 'edit.php?id=$row[id]'><button>EDIT</button></a>
+                            <a href = 'delete.php?id=$row[id]'><button>DELETE</button></a>
+                        </td>
+                </tr>
+                    ";
+                }
+            ?>
+
+        </table> 
+
         <!-- end of user table -->
 
         <!-- customer table -->
@@ -141,66 +126,43 @@
             <th>Email Address</th>
             <th>Action</th>
             </tr>
-            
-            <tr>
-                <td>Kuys</td>
-                <td>02</td>
-                <td>brgy.69 malolos bulacan</td>
-                <td>asdasdsad@gmail.com</td>
-                <td>
-                    <input type="image" src="" alt="logo">
-                    <input type="image" src="" alt="logo">
-                    <input type="image" src="" alt="logo">
-                </td>
-            </tr>
+            <?php
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
+                $database = "kuys";
 
-            <tr>
-                <td>Kuys</td>
-                <td>02</td>
-                <td>brgy.69 malolos bulacan</td>
-                <td>asdasdsad@gmail.com</td>
-                <td>
-                    <input type="image" src="" alt="logo">
-                    <input type="image" src="" alt="logo">
-                    <input type="image" src="" alt="logo">
-                </td>
-            </tr>
+                $connection = new mysqli($servername,$username,$password,$database);
 
-            <tr>
-                <td>Kuys</td>
-                <td>02</td>
-                <td>brgy.69 malolos bulacan</td>
-                <td>asdasdsad@gmail.com</td>
-                <td>
-                    <input type="image" src="" alt="logo">
-                    <input type="image" src="" alt="logo">
-                    <input type="image" src="" alt="logo">
-                </td>
-            </tr>
+                // check connection
+                if($connection->connect_error){
+                    die("Connection : ERROR " . $connection->connect_error);
+                }
 
-            <tr>
-                <td>Kuys</td>
-                <td>02</td>
-                <td>brgy.69 malolos bulacan</td>
-                <td>asdasdsad@gmail.com</td>
-                <td>
-                    <input type="image" src="" alt="logo">
-                    <input type="image" src="" alt="logo">
-                    <input type="image" src="" alt="logo">
-                </td>
-            </tr>
+                //read data
+                $sql = "SELECT * FROM customers";
+                $result = $connection->query($sql);
 
-            <tr>
-                <td>Kuys</td>
-                <td>02</td>
-                <td>brgy.69 malolos bulacan</td>
-                <td>asdasdsad@gmail.com</td>
-                <td>
-                    <input type="image" src="" alt="logo">
-                    <input type="image" src="" alt="logo">
-                    <input type="image" src="" alt="logo">
-                </td>
-            </tr>
+                if(!$result){
+                    die("INVALID query " . $connection->error);
+                }
+
+                
+                while($row = $result->fetch_assoc()){
+                    echo "
+                    <tr>
+                        <td>$row[customerID]</td>
+                        <td>$row[name]</td>
+                        <td>$row[email]</td>
+                        <td>$row[addr]</td>
+                        <td>
+                            <a href = 'edit.php?id=$row[customerID]'><button>EDIT</button></a>
+                            <a href = 'delete.php?id=$row[customerID]'><button>DELETE</button></a>
+                        </td>
+                </tr>
+                    ";
+                }
+            ?>
         </table>
         <script src="script.js"></script>
 

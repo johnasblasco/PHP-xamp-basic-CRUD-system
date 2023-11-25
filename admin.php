@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>dashboard</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin.css">
 </head>
 
 <body>
@@ -59,7 +59,7 @@
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="#" onclick ="displayContainer('settings')">
                     Settings
                 </a>
             </li>
@@ -69,8 +69,8 @@
     <!-- usertable -->
     <table cellspacing="5" cellpadding="5" border  = "1" id = "user-table">
             <tr>
-            <th>User Name</th>
             <th>User ID</th>
+            <th>User Name</th>
             <th>Email Address</th>
             <th>Address</th>
             <th>Action</th>
@@ -105,8 +105,8 @@
                         <td>$row[email]</td>
                         <td>$row[addr]</td>
                         <td>
-                            <a href = 'edit.php?id=$row[id]'><button>EDIT</button></a>
-                            <a href = 'delete.php?id=$row[id]'><button>DELETE</button></a>
+                            <a href = 'edit.php?id=$row[id]'><button id = 'ed'>EDIT</button></a>
+                            <a href = 'delete.php?id=$row[id]'><button id = 'del'>DELETE</button></a>
                         </td>
                 </tr>
                     ";
@@ -120,8 +120,8 @@
         <!-- customer table -->
         <table cellspacing="5" cellpadding="5" border  = "1" id = "customer-table">
             <tr>
-            <th> Name</th>
             <th>Customer ID</th>
+            <th>Customer Name</th>
             <th>Customer Address</th>
             <th>Email Address</th>
             <th>Action</th>
@@ -156,14 +156,37 @@
                         <td>$row[email]</td>
                         <td>$row[addr]</td>
                         <td>
-                            <a href = 'edit.php?id=$row[customerID]'><button>EDIT</button></a>
-                            <a href = 'delete.php?id=$row[customerID]'><button>DELETE</button></a>
+                            <a href = 'edit.php?id=$row[customerID]'><button id ='ed'>EDIT</button></a>
+                            <a href = 'delete.php?id=$row[customerID]'><button id = 'del'>DELETE</button></a>
                         </td>
                 </tr>
                     ";
                 }
             ?>
         </table>
+        <!-- end of table -->
+
+        
+        <!-- settings -->
+        <table class = "settings" id = "settings">
+            <thead>
+                <tr>
+                    <th>Settings</th>
+                </tr>
+            </thead>        
+            
+            <tbody>
+                <tr>
+                    <td><a href="create-user.php"><button>Add Data Users</button></a></td>
+                </tr>
+                <td>
+                    <a href=""><button>Add Data Customer</button></a></td>
+                </tr>
+            </tbody>
+            
+        </div>
+
+
         <script src="script.js"></script>
 
         <!-- end of customer table -->

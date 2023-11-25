@@ -1,4 +1,10 @@
 <?php
+    $name = "";
+    $email = "";
+    $addr = "";
+    $errorMessage = "";
+    $successMessage = "";
+
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -8,64 +14,37 @@
     $connection = new mysqli($servername,$username,$password,$database);
 
 
-    $name = "";
-    $email = "";
-    $addr = "";
-    $errorMessage = "";
-    $successMessage = "";
-
-    if($_SERVER['REQUEST_METHOD'] == 'GET'){
-
-        if(!isset($_GET["id"])){
-            header("/ADMIN/admin.php");
-            exit;
-        }
-
-        $id = $_GET["id"];
-
-        //read the row of selected users from database table
-        $sql = "SELECT * FROM users WHERE id = $id";
-        $result = $connection->query($sql);
-        $row = $result->fetch_assoc();
-
-        if(!$row){
-            header("location/ADMIN/admin.php");
-        }
-        $name = $row ["name"];
-        $email = $row ["email"];
-        $addr = $row ["addr"];
-    }
-    else{
-        //post method: update data
-        $id = $_POST ["id"];
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $name = $_POST ["name"];
         $email = $_POST ["email"];
         $addr = $_POST ["addr"];
-
-        do{
-            if(empty($id) || empty($name) || empty($email) || empty($addr)){
-                $errorMessage = "all fields are required!";
-                break;
-            }
-
-            $sql = "UPDATE users " .
-                    "SET name = '$name', email = '$email', addr = '$addr'" .
-                    "WHERE id = $id";
-
-            $result = $connection->query($sql);
-
-            if(!$result){
-                $errorMessage = "Invalid Query: " . $connection->error;
-                break;
-            }
-            $successMessage = "User Update successfully!";
-            header("location: /ADMIN/admin.php");
-            sleep(.5);
-            exit;
-            
-        }while(false);
-
     }
+
+    do {
+        if(empty($name) || empty($email) || empty($addr)){
+            $errorMessage = "all fields are required!";
+            break;
+        }
+        
+
+        //add or insert to database
+        $sql = "INSERT INTO users(name,email,addr)" .
+        "VALUES ('$name','$email','$addr')";
+
+        $result = $connection->query($sql);
+
+        if(!$result){
+            $errorMessage = "Invalid Query: " . $connection->error;
+            break;
+        }
+        $successMessage = "users Added successfully!";
+        header("location: /ADMIN/admin.php");
+        sleep(.5);
+        exit;
+
+        
+    } while(false);
+    
 ?>
 
 
@@ -83,7 +62,7 @@
 </head>
 <body>
     <div class="container my-5">
-        <h2>Edit Users</h2>
+        <h2>Add New Users</h2>
         <?php
             if(!empty($errorMessage)){
                 echo "
@@ -95,8 +74,6 @@
             }
          ?>
         <form method = "post">
-            <input type="hidden" name = "id" value = "<?php echo $id; ?>" >
-            
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Name</label>
                 <div class="col-sm-6">

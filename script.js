@@ -1,6 +1,6 @@
 
 let currentContainer = null;
-
+//function for display tables
 function displayContainer(containerId) {
   var selectedContainer = document.getElementById(containerId);
 
@@ -15,3 +15,6 @@ function displayContainer(containerId) {
     currentContainer = selectedContainer;
   }
 }
+
+
+// eto naman function for selected navigations

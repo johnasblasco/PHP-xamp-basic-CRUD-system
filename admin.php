@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>dashboard</title>
     <link rel="stylesheet" href="admin.css">
+    <script src="script.js"></script>
 </head>
 
 <body>
@@ -105,8 +106,8 @@
                         <td>$row[email]</td>
                         <td>$row[addr]</td>
                         <td>
-                            <a href = 'edit.php?id=$row[id]'><button id = 'ed'>EDIT</button></a>
-                            <a href = 'delete.php?id=$row[id]'><button id = 'del'>DELETE</button></a>
+                            <a href = 'edit-user.php?id=$row[id]'><button id = 'ed'>EDIT</button></a>
+                            <a href = 'delete-user.php?id=$row[id]'><button id = 'del'>DELETE</button></a>
                         </td>
                 </tr>
                     ";
@@ -156,8 +157,8 @@
                         <td>$row[email]</td>
                         <td>$row[addr]</td>
                         <td>
-                            <a href = 'edit.php?id=$row[customerID]'><button id ='ed'>EDIT</button></a>
-                            <a href = 'delete.php?id=$row[customerID]'><button id = 'del'>DELETE</button></a>
+                            <a href = 'edit-customer.php?id=$row[customerID]'><button id ='ed'>EDIT</button></a>
+                            <a href = 'delete-customer.php?id=$row[customerID]'><button id = 'del'>DELETE</button></a>
                         </td>
                 </tr>
                     ";
@@ -180,14 +181,14 @@
                     <td><a href="create-user.php"><button>Add Data Users</button></a></td>
                 </tr>
                 <td>
-                    <a href=""><button>Add Data Customer</button></a></td>
+                    <a href="create-customer.php"><button>Add Data Customer</button></a></td>
                 </tr>
             </tbody>
             
         </div>
 
 
-        <script src="script.js"></script>
+        
 
         <!-- end of customer table -->
 </body>

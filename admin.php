@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <audio src = "assets/FEEL.mp3" type ="audio/mpeg" controls autoplay loop style="display:none"></audio>
 
     <div class="sidebar">
         <div class="logo">
@@ -158,7 +159,7 @@
                         <td>$row[addr]</td>
                         <td>
                             <a href = 'edit-customer.php?id=$row[customerID]'><button id ='ed'>EDIT</button></a>
-                            <a href = 'delete-customer.php?id=$row[customerID]'><button id = 'del'>DELETE</button></a>
+                            <a href = 'delete-customer  .php?id=$row[customerID]'><button id = 'del'>DELETE</button></a>
                         </td>
                 </tr>
                     ";

@@ -11,7 +11,7 @@
         //connection
         $connection = new mysqli($servername,$username,$password,$database);
 
-        $sql = "DELETE FROM customers WHERE id=$id";
+        $sql = "DELETE FROM customers WHERE customerID=$id";
         $connection->query($sql); 
     }
     header("location: /ADMIN/admin.php");

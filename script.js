@@ -1,6 +1,6 @@
-
-let currentContainer = null;
 //function for display tables
+let currentContainer = null;
+
 function displayContainer(containerId) {
   var selectedContainer = document.getElementById(containerId);
 
